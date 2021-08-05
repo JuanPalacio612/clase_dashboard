@@ -90,12 +90,12 @@ c1, c2 = st.beta_columns((1,1))
 
 #Código para la primera columna
 c1.markdown("<h3 style = 'text-align: center; color: #Black;' >¿Dónde han ocurrido disparos en New York? </h3>", unsafe_allow_html = True )
-year = c1.slider('Año en el que se presentó el suceso', df['year'].min(), df['year'].max())
+year = c1.slider('Año en el que se presentó el suceso', 2006, 2020)
 c1.map(df[df['year'] == year][['latitude', 'longitude']].dropna())
 
 #Código segunda columna 
 c2.markdown("<h3 style = 'text-align: center; color: #Black;' >¿A qué hora ocurren los disparos en New York? </h3>", unsafe_allow_html = True )
-hour = c2.slider('Hora en la que se presentó el suceso', df['hour'].min(), df['hour'].max())
+hour = c2.slider('Hora en la que se presentó el suceso', 0, 23)
 df2 = df[df['hour'] == hour]
 c2.write(pdk.Deck(
     map_style = 'mapbox://styles/mapbox/light-v9',
